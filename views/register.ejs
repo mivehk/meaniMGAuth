@@ -1,0 +1,30 @@
+<DOCTYPE html>
+    <html lang="us">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            MeaniMGAuth
+        </title>
+        <link rel="stylesheet" type="test/css" href="index.css" />
+        <script type="text/javascript"> const token = await res.json(); document.cookie = `token=${token}`</script>
+    </head>
+    <body>
+        <section>
+            <div><p><a href="/api/">Home</a></p></div>
+        </section>
+        <section>
+            <h1>Register</h1>
+            <div><p> Already a member?  Please <a href="/api/login" >login</a> instead </p></div>
+        </section>
+        <section>
+            <form method="post" action="">
+                <label>Full name</label><input type="text" name="fullname"  /></br>
+                <label>email Address</label><input type="text" name="email"   /></br>
+                <label>Password</label><input type="password" name="password"  /></br>
+                <label>register</label><button type="submit" id="submit">Register</button></br>
+            </form>
+        </section>
+
+    </body>
+    </html>
+</DOCTYPE>
