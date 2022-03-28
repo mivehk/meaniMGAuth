@@ -1,11 +1,17 @@
 import passport from "passport"
 import mongoose from "mongoose"
-import { usersSchema } from "../models/iMGusers"
+import { usersSchema } from "../models/iMGusers.js"
 
 const usersModel = mongoose.model("usersModel", usersSchema , "usersDocs")
 
 
-module.exports.register = (req,res)=>{
+/* var sendJSONresponse = function(res, status, content){
+    res.status(status)
+    res.json(content)
+}
+ */
+
+export const register = (req,res)=>{
     var user = new usersModel()
 
     user.fullname = req.body.fullname

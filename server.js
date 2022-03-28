@@ -6,9 +6,11 @@ import path from "path"
 import passport from "passport"
 
 
+
 import { fileURLToPath } from "url"
 import {dirname} from "path"
 //import { markAsUntransferable } from "worker_threads"
+
 
 const __filename=fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -29,10 +31,13 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(passport.initialize())
 
+
 routes(app)
+
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "./views/"))
+
 
 app.use(express.static(path.join(__dirname,"./public")))
 

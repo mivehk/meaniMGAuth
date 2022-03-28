@@ -32,7 +32,7 @@ export const func04 = (req,res) =>{
     let newUsersModel = new UsersModel(req.body)
     newUsersModel.save((err,cluster)=>{
         if (err){
-            console.log(`Hello Errored World`)
+            console.log(`Hello Errored World - 04`)
             /* res.status(401).json({
                 "message" : "unauthorizedError: private profile"
             }) */
@@ -67,7 +67,7 @@ export const func06 = (req,res) =>{
 export const func07 = (req,res) =>{
 
     UsersModel.find({_id:req.params.userid}, (err,cluster)=>{
-        if (err){res.status(401).json({"message":"errored world"})}
+        if (err){res.status(401).json({"message":"errored world - 07"})}
         else if (cluster.length == 0){
             console.log(`no such a user exists`)
             res.redirect("/")
@@ -80,10 +80,13 @@ export const func07 = (req,res) =>{
                  console.log(`Found a user`)
                 res.render("profile",  {sarvar07: user, template:"profile"} )
             })  */
+            console.log(req.payload)
             UsersModel.findById(req.payload._id).exec(function(err,user){
                 if (err){res.status(401).json({"message":"no auth"})}
                 else {
                     //res.render("profile", {sarvar07: user, template:"profile"} )
+                    console.log(user)
+                    console.log(payload)
                     res.status(200).json(user)
                 }                
             })           

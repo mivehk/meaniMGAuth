@@ -6,11 +6,13 @@
             MeaniMGAuth
         </title>
         <link rel="stylesheet" type="test/css" href="index.css" />
-        <script type="text/javascript"> const token = await res.json(); document.cookie = `token=${token}`</script>
+       <!--- <script type="text/javascript"> const token = await res.json(); document.cookie = `token=${token}`</script> --->
+   
     </head>
     <body>
         <section>
-            <div><p><a href="/api/">Home</a></p></div>
+            <div><p><a href="/api/">Home</a></p></div> </br>
+            <div id="warn">Hello</div> </br>
         </section>
         <section>
             <h1>Register</h1>
@@ -22,9 +24,15 @@
                 <label>email Address</label><input type="text" name="email"   /></br>
                 <label>Password</label><input type="password" name="password"  /></br>
                 <label>register</label><button type="submit" id="submit">Register</button></br>
+                
             </form>
         </section>
-
+       <script>
+       var jw={ fullname="fullname", email='email', password='password'} 
+       var msg0 = window.localStorage.setItem('token',JSON.stringify(jw)); 
+       var msg1 = window.localStorage.getItem('token'); 
+       var container1 = document.getElementById("warn"); 
+       container1.innerText = `SAR ${msg1}` </script>
     </body>
     </html>
 </DOCTYPE>

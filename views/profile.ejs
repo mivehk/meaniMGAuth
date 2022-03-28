@@ -6,7 +6,22 @@
             MeaniMGAuth
         </title>
         <link rel="stylesheet" type="test/css" href="index.css" />
-        <script type="text/javascript"> const token = await res.json(); document.cookie = `token=${token}`</script>
+       <!--- <script type="text/javascript"> const token = await res.json(); document.cookie = `token=${token}`</script> --->
+       <script>     function makeRequest(url, method) {
+        var jwtToken = localStorage.getItem('token')
+        var headers = {}
+    
+        if(jwtToken) {
+            headers['Authorization'] = 'Bearer ' + jwtToken
+        }
+    
+        return fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors',
+            headers: headers
+        })
+    }    
+    </script>
     </head>
     <body>
         <% sarvar07%>

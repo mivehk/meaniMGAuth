@@ -7,7 +7,7 @@ const usersModel = mongoose.model("usersModel", usersSchema, "usersDocs")
 
 //export const passp =() =>{
 
-passport.use( new LocalStrategy.Strategy({
+passport.use( new LocalStrategy({
     usernameField : "email"
 },
 function (username, password, done){
