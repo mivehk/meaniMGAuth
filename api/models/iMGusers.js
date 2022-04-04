@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
+import crypto from "crypto"
 
 export const usersSchema = new mongoose.Schema({
 
@@ -27,7 +28,7 @@ export const usersSchema = new mongoose.Schema({
     this.hash =crypto.pbkdf2Sync (password , this.salt, 1000, 64, 'sha512').toString('hex')
 }
 
-usersSchema.methods.validPassword= function(password){
+usersSchema.methods.verifyPassword= function(password){
     var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex')
     return this.hash === hash
 }

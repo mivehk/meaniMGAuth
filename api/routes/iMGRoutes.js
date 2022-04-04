@@ -1,8 +1,12 @@
 import express from "express"
-import {func01 , func02 , func03, func04, func05, func06 , func07, func08} from "../controllers/iMGCtrls.js"
+import {func01_apiget , func02_apipost , func03_registerget, func04_registerpost, func05_loginget, func06_loginpost , func07_profileget, func08_profilepost} from "../controllers/iMGCtrls.js"
 import {register, login} from "../controllers/authenti.js"
+import {} from "dotenv/config"
+import connectEnsureLogin from "connect-ensure-login"
 
 import jwt from "express-jwt"
+//import { initialize2 } from "../config/passport.js"
+//import passport  from "passport"
 
 
  var auth = jwt({
@@ -24,23 +28,23 @@ const routes = (app) =>{
 	        console.log(`Request type: ${req.method}`);
             //console.log(localStorage)
             next()
-        }, func01)
+        }, func01_apiget)
         .post((req,res, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        }, func02)
+        }, func02_apipost)
 
         app.get("/api/register",(req,res, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        }, func03)
+        }, func03_registerget)
         app.post("/api/register", (req,res, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        },func04)
+        },register)
         
         
         app.route("/api/login")
@@ -48,14 +52,14 @@ const routes = (app) =>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        }, func05)
+        }, func05_loginget)
         .post((req,res, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        }, func06)
+        }, login )
 
-        app.get("/api/profile/:userid",auth ,(req,res,err, next)=>{
+        app.get("/api/profile/:userid" ,auth,(req,res,err, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             //console.log(localStorage)
@@ -67,12 +71,12 @@ const routes = (app) =>{
             }  
             //res.status(301) 
             next()
-        } ,func07)
+        } ,func07_profileget)
         app.post("/api/profile/:userid",(req,res, next)=>{
             console.log (`Request from : ${ req.originalUrl}`);
 	        console.log(`Request type: ${req.method}`);
             next()
-        }, func08)
+        }, func08_profilepost)
 
 
 
